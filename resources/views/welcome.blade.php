@@ -30,7 +30,7 @@
                 </div>
             @endif
     <div class="container__welcome">
-        Hi server!!!!!
+        Hi server!!!!!!
     </div>
     </body>
 </html>
