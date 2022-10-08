@@ -14,18 +14,18 @@ git pull origin master
 #composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
 # Clear the old cache
-php artisan clear-compiled
+#php artisan clear-compiled
 
 # Recreate cache
-php artisan optimize
+#php artisan optimize
 
 # Compile npm assets
 npm run prod
 
 # Run database migrations
-php artisan migrate --force
+#php artisan migrate --force
 
 # Exit maintenance mode
-php artisan up
+#php artisan up
 
 echo "Deployment finished!"
