@@ -30,7 +30,7 @@
                 </div>
             @endif
     <div class="container__welcome">
-        123 hi server!!!!!!!!!!!
+        123 test auto deploy
     </div>
     </body>
 </html>
