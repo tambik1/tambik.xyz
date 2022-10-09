@@ -30,7 +30,7 @@
                 </div>
             @endif
     <div class="container__welcome">
-        Hi server!!!!!!!!!!Чекаем изменения!!!!!!!!!!!!!
+        Hi server!!!!!!!!!!Чекаем изменения!!!!!!!!!!!!!123412312312
     </div>
     </body>
 </html>
