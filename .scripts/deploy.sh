@@ -4,7 +4,7 @@ set -e
 echo "Deployment started ..."
 # Enter maintenance mode or return true
 # if already is in maintenance mode(!)
-(php artisan down) || true
+(/opt/php80/bin/php artisan down) || true
 
 # Pull the latest version of the app
 git pull origin master
@@ -13,18 +13,18 @@ git pull origin master
 #composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
 # Clear the old cache(!)
-php artisan clear-compiled
+/opt/php80/bin/php artisan clear-compiled
 
 # Recreate cache(!)
-php artisan optimize
+/opt/php80/bin/php artisan optimize
 
 # Compile npm assets(!)
-#npm run build
+npm run build
 
 # Run database migrations(!)
-php artisan migrate --force
+/opt/php80/bin/php artisan migrate --force
 
 # Exit maintenance mode(!)
-php artisan up
+/opt/php80/bin/php artisan up
 
 echo "Deployment finished!"
