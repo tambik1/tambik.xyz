@@ -30,7 +30,7 @@
                 </div>
             @endif
     <div class="container__welcome">
-        Проверка ci|cdЁ!!!!!!~!!!@!!!"№213123!!dsgdsgsdgdfgdfgweqeqweqw
+        Проверка ci|cd!!!!!!!!!!!!
     </div>
     </body>
 </html>
