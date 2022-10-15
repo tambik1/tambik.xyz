@@ -30,7 +30,7 @@
                 </div>
             @endif
     <div class="container__welcome">
-        Проверка ci|cd
+        Проверка ci|cdЁ!
     </div>
     </body>
 </html>
