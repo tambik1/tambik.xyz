@@ -10,4 +10,13 @@ class TeamController extends Controller
     {
         $this->middleware('auth');
     }
+    public function showAllTeam()
+    {
+        return view('blocks._teams');
+    }
+
+    public function createTeam()
+    {
+
+    }
 }

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/css/uikit.min.css" />
     <link rel="stylesheet" href="/css/uikit-rtl.min.css" />
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/css/app.css'])
 </head>
 <body>
     <div id="app">
@@ -48,7 +48,7 @@
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Создать турнир') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Управление командами') }}</a>
+                            <a class="nav-link" href="{{ route('showAllTeam') }}">{{ __('Управление командами') }}</a>
                         </li>
                     @endauth
                         <!-- Authentication Links -->
