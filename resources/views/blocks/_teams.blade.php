@@ -32,8 +32,6 @@
                 <div class="teams_card_container">
                     <div class="uk-card uk-card-default uk-card-hover uk-card-small uk-card-body"
                          style="border-radius: 20px; display: flex; flex-direction: column; align-items: center;">
-                        <h3 class="uk-card-title" style="width: 180px; overflow: hidden; text-overflow: ellipsis;">ID:
-                            <span>{{$team->id}}</span></h3>
                         <h3 class="uk-card-title" style="width: 180px; overflow: hidden; text-overflow: ellipsis;">
                             {{$team->name}}</h3>
                         <a class="uk-button uk-button-primary" href="{{route('detailTeam', $team->id)}}">Подробнее</a>

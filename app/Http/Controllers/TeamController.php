@@ -18,7 +18,7 @@ class TeamController extends Controller
     {
         $allTeams = new Teams();
 
-        return view('blocks._teams',['data'=>$allTeams::all()]);
+        return view('blocks._teams', ['data' => $allTeams::all()]);
     }
 
     public function createTeam(TeamsRequest $req)
@@ -41,13 +41,15 @@ class TeamController extends Controller
         $team = new Teams();
         return view('blocks._update-team', ['data' => $team->find($id)]);
     }
-    public function updateTeamSubmit(int $id,TeamsRequest $req)
+
+    public function updateTeamSubmit(int $id, TeamsRequest $req)
     {
         $updateTeam = Teams::find($id);
         $updateTeam->name = $req->input('name');
         $updateTeam->save();
-        return redirect()->route('detailTeam')->with('success', 'Запись была обновлена');
+        return redirect()->route('detailTeam', $id)->with('success', 'Запись была обновлена');
     }
+
     public function deleteTeam(int $id)
     {
         Teams::find($id)->delete();
