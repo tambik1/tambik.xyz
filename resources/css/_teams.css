@@ -19,3 +19,9 @@
     top: 0;
     right: 24px;
 }
+.content-container
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

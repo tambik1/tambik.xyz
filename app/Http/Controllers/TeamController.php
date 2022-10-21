@@ -21,9 +21,6 @@ class TeamController extends Controller
         return view('blocks._teams',['data'=>$allTeams::all()]);
     }
 
-    /**
-     * @property string $name
-     */
     public function createTeam(TeamsRequest $req)
     {
         $newTeam = new Teams();
@@ -31,5 +28,29 @@ class TeamController extends Controller
         $newTeam->save();
 
         return redirect()->route('showAllTeam')->with('success', 'Команда была создана');
+    }
+
+    public function detailTeam(int $id)
+    {
+        $team = new Teams();
+        return view('blocks._team', ['data' => $team->find($id)]);
+    }
+
+    public function updateTeam(int $id)
+    {
+        $team = new Teams();
+        return view('blocks._update-team', ['data' => $team->find($id)]);
+    }
+    public function updateTeamSubmit(int $id,TeamsRequest $req)
+    {
+        $updateTeam = Teams::find($id);
+        $updateTeam->name = $req->input('name');
+        $updateTeam->save();
+        return redirect()->route('detailTeam')->with('success', 'Запись была обновлена');
+    }
+    public function deleteTeam(int $id)
+    {
+        Teams::find($id)->delete();
+        return redirect()->route('showAllTeam', $id)->with('success', 'Запись была удалена');
     }
 }
