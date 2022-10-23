@@ -36,7 +36,7 @@
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Статистика') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Турниры') }}</a>
+                            <a class="nav-link" href="{{ route('tournaments.index') }}">{{ __('Турниры') }}</a>
                         </li>
                     </ul>
                 @endauth
@@ -44,9 +44,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                     @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Создать турнир') }}</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('showAllTeam') }}">{{ __('Управление командами') }}</a>
                         </li>

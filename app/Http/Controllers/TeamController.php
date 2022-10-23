@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\TeamsRequest;
-use App\Models\Teams;
+use App\Http\Requests\TeamRequest;
+use App\Models\Team;
 
 
 class TeamController extends Controller
@@ -14,16 +14,16 @@ class TeamController extends Controller
         $this->middleware('auth');
     }
 
-    public function showAllTeam(Request $req)
+    public function showAllTeam()
     {
-        $allTeams = new Teams();
+        $allTeams = Team::all();
 
-        return view('blocks._teams', ['data' => $allTeams::all()]);
+        return view('blocks._teams', ['data' => $allTeams]);
     }
 
-    public function createTeam(TeamsRequest $req)
+    public function createTeam(TeamRequest $req)
     {
-        $newTeam = new Teams();
+        $newTeam = new Team();
         $newTeam->name = $req->input('name');
         $newTeam->save();
 
@@ -32,19 +32,19 @@ class TeamController extends Controller
 
     public function detailTeam(int $id)
     {
-        $team = new Teams();
-        return view('blocks._team', ['data' => $team->find($id)]);
+        $team = Team::find($id);
+        return view('blocks._team', ['data' => $team]);
     }
 
     public function updateTeam(int $id)
     {
-        $team = new Teams();
-        return view('blocks._update-team', ['data' => $team->find($id)]);
+        $team = Team::find($id);
+        return view('blocks._update-team', ['data' => $team]);
     }
 
-    public function updateTeamSubmit(int $id, TeamsRequest $req)
+    public function updateTeamSubmit(int $id, TeamRequest $req)
     {
-        $updateTeam = Teams::find($id);
+        $updateTeam = Team::find($id);
         $updateTeam->name = $req->input('name');
         $updateTeam->save();
         return redirect()->route('detailTeam', $id)->with('success', 'Запись была обновлена');
@@ -52,7 +52,7 @@ class TeamController extends Controller
 
     public function deleteTeam(int $id)
     {
-        Teams::find($id)->delete();
-        return redirect()->route('showAllTeam', $id)->with('success', 'Запись была удалена');
+        Team::find($id)->delete();
+        return redirect()->route('showAllTeam')->with('success', 'Запись была удалена');
     }
 }

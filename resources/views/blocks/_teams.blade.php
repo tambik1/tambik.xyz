@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
+    <h1 class="teams__title" style="text-align: center">Команды</h1>
     <div class="content-container">
-        <h1 class="teams__title" style="text-align: center">Команды</h1>
 
         <div class="teams_container">
             <div class="teams_create_btn_container">
