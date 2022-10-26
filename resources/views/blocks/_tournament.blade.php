@@ -15,10 +15,12 @@
                 <h4 class="uk-card-title">Дата окончания: <span>{{$data->end_date}}</span></h4>
                 <a href="#"><button class="uk-button uk-button-primary">Перейти к матчам</button></a>
             </div>
-            <div class="uk-card-footer">
-                <a href="{{route('tournaments.edit', $data->id)}}"><button class="uk-button uk-button-primary">Изменить</button></a>
-                <button class="uk-button uk-button-danger" uk-toggle="target: #modal-delete-tournament" style="margin-left: 15px">Удалить</button>
-            </div>
+            @can('showAdminContent')
+                <div class="uk-card-footer">
+                    <a href="{{route('tournaments.edit', $data->id)}}"><button class="uk-button uk-button-primary">Изменить</button></a>
+                    <button class="uk-button uk-button-danger" uk-toggle="target: #modal-delete-tournament" style="margin-left: 15px">Удалить</button>
+                </div>
+            @endcan
         </div>
 
         <div id="modal-delete-tournament" uk-modal>

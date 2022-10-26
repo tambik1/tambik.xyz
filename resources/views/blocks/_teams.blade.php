@@ -38,7 +38,9 @@
                     </div>
                 </div>
             @endforeach
+            <div class="pagination">
+                {{$data->links()}}
+            </div>
     </div>
-
 @endsection
 

@@ -38,15 +38,27 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('tournaments.index') }}">{{ __('Турниры') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('showAllTeam') }}">{{ __('Команды') }}</a>
+                        </li>
                     </ul>
                 @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                     @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('showAllTeam') }}">{{ __('Управление командами') }}</a>
-                        </li>
+                            @can('showAdminContent')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('test') }}">{{ __('Для тестов') }}</a>
+                                </li>
+                            @endcan
+                    @endauth
+                    @auth
+                        @can('showAdminContent')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Управление пользователями') }}</a>
+                            </li>
+                        @endcan
                     @endauth
                         <!-- Authentication Links -->
                         @guest

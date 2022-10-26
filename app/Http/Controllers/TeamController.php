@@ -16,7 +16,7 @@ class TeamController extends Controller
 
     public function showAllTeam()
     {
-        $allTeams = Team::all();
+        $allTeams = Team::paginate(25);
 
         return view('blocks._teams', ['data' => $allTeams]);
     }
@@ -32,7 +32,7 @@ class TeamController extends Controller
 
     public function detailTeam(int $id)
     {
-        $team = Team::find($id);
+        $team = Team::findOrFail($id);
         return view('blocks._team', ['data' => $team]);
     }
 

@@ -16,21 +16,23 @@
 
     </head>
     <body class="antialiased">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Вперёд к соревнованиям</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Авторизация</a>
+    <div class="container__index">
+        @if (Route::has('login'))
+            <div class="auth_block">
+                @auth
+                    <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Вперёд к соревнованиям</a>
+                @else
+                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Авторизация</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Регистрация</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-    <div class="container__welcome">
-        Проверка ci|cd!  Проверка ci|cd!
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Регистрация</a>
+                    @endif
+                @endauth
+            </div>
+        @endif
+        <div class="container__welcome">
+            Проверка ci|cd!  Проверка ci|cd!
+        </div>
     </div>
     </body>
 </html>

@@ -13,9 +13,10 @@
                 <p>ID: <span>{{$data->id}}</span></p>
             </div>
             <div class="uk-card-footer">
-
-                <a href="{{route('updateTeam', $data->id)}}"><button class="uk-button uk-button-primary">Изменить</button></a>
-                <button class="uk-button uk-button-danger" uk-toggle="target: #modal-delete-team" style="margin-left: 15px">Удалить</button>
+                @can('showAdminContent')
+                    <a href="{{route('updateTeam', $data->id)}}"><button class="uk-button uk-button-primary">Изменить</button></a>
+                    <button class="uk-button uk-button-danger" uk-toggle="target: #modal-delete-team" style="margin-left: 15px">Удалить</button>
+                @endcan
             </div>
         </div>
 

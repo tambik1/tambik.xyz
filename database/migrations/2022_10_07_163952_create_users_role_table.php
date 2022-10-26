@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users_role', function (Blueprint $table) {
+        Schema::create('users_roles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('role');
-
+            $table->string('role')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
         });
     }

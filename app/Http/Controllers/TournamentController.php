@@ -14,7 +14,7 @@ class TournamentController extends Controller
 
     public function index()
     {
-        $allTournament = Tournament::all();
+        $allTournament = Tournament::paginate(25);
         return view('blocks._tournaments',['data' => $allTournament]);
     }
 
@@ -31,7 +31,7 @@ class TournamentController extends Controller
 
     public function show(int $id)
     {
-        $tournament = Tournament::find($id);
+        $tournament = Tournament::findOrFail($id);
         return view('blocks._tournament', ['data' => $tournament]);
     }
 
