@@ -4,29 +4,32 @@
     <div class="content-container">
 
         <div class="teams_container">
-            <div class="teams_create_btn_container">
-                <button class="uk-button uk-button-secondary" uk-toggle="target: #modal-create-team" type="button"
-                        style="border-radius: 5px">Создать команду
-                </button>
-            </div>
-
-            <div id="modal-create-team" uk-modal>
-                <div class="uk-modal-dialog uk-modal-body">
-                    <form action="{{route('createTeam')}}" method="post">
-                        @csrf
-                        <label for="name" style="margin: 5px">Введите название команды</label>
-                        <input name="name" id="name" class="uk-input" type="text" placeholder="Название команды"
-                               style="margin: 5px">
-                        <p class="uk-text-right">
-                            <button class="uk-button uk-button-default uk-modal-close" type="button"
-                                    style="margin: 5px">Отмена
-                            </button>
-                            <button class="uk-button uk-button-primary" type="submit" style="margin: 5px">Создать
-                            </button>
-                        </p>
-                    </form>
+            @can('showAdminContent')
+                <div class="teams_create_btn_container">
+                    <button class="uk-button uk-button-secondary" uk-toggle="target: #modal-create-team" type="button"
+                            style="border-radius: 5px">Создать команду
+                    </button>
                 </div>
-            </div>
+
+                <div id="modal-create-team" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <form action="{{route('createTeam')}}" method="post">
+                            @csrf
+                            <label for="name" style="margin: 5px">Введите название команды</label>
+                            <input name="name" id="name" class="uk-input" type="text" placeholder="Название команды"
+                                   style="margin: 5px">
+                            <p class="uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close" type="button"
+                                        style="margin: 5px">Отмена
+                                </button>
+                                <button class="uk-button uk-button-primary" type="submit" style="margin: 5px">Создать
+                                </button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            @endcan
+
 
             @foreach($data as $team)
                 <div class="teams_card_container">

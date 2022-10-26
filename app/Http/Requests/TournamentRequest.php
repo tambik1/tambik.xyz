@@ -14,7 +14,6 @@ class TournamentRequest extends FormRequest
      */
     public function authorize()
     {
-        //TODO: Сделать проверку на Админа
         return Auth::check();
     }
 
