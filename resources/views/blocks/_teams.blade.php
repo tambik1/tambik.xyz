@@ -17,7 +17,7 @@
                             @csrf
                             <label for="name" style="margin: 5px">Введите название команды</label>
                             <input name="name" id="name" class="uk-input" type="text" placeholder="Название команды"
-                                   style="margin: 5px">
+                                   style="margin: 5px" required>
                             <p class="uk-text-right">
                                 <button class="uk-button uk-button-default uk-modal-close" type="button"
                                         style="margin: 5px">Отмена

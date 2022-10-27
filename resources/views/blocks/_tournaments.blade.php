@@ -16,17 +16,17 @@
                             @csrf
                             <label for="name" style="margin: 5px">Введите название турнира</label>
                             <input name="name" id="name" class="uk-input" type="text" placeholder="Название турнира"
-                                   style="margin: 5px">
+                                   style="margin: 5px" required>
                             <div class="form-group">
                                 <label for="from-date">Введите дату начала:</label>
                                 <div class="input-group mb-4 constrained">
-                                    <input name="start_date" type="date" class="form-control ppDate" id="from-date" aria-describedby="date-design-prepend">
+                                    <input name="start_date" type="date" class="form-control ppDate" id="from-date" aria-describedby="date-design-prepend" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="from-date">Введите дату окончания:</label>
                                 <div class="input-group mb-4 constrained">
-                                    <input name="end_date" type="date" class="form-control ppDate" id="from-date" aria-describedby="date-design-prepend">
+                                    <input name="end_date" type="date" class="form-control ppDate" id="from-date" aria-describedby="date-design-prepend" required>
                                 </div>
                             </div>
                             <p class="uk-text-right">
