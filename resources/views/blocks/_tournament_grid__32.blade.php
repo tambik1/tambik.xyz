@@ -9,7 +9,7 @@
 
 
     <section id="bracket">
-        <div class="container">
+        <div class="container__grid">
             <div class="split split-one">
                 <div class="round round-one current">
                     <div class="round-details">1/16<br/></div>

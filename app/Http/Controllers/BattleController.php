@@ -12,6 +12,6 @@ class BattleController extends Controller
     }
     public function showBattle($tournamentId){
 
-        return view('blocks._tournament_grid');
+        return view('blocks._tournament_grid__32');
     }
 }

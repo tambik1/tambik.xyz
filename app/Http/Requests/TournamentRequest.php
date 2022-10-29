@@ -28,6 +28,7 @@ class TournamentRequest extends FormRequest
             'name' => 'required|min:5|max:50',
             'start_date' => 'required',
             'end_date' => 'required',
+            'type' => 'required',
         ];
     }
     public function messages()
@@ -38,6 +39,7 @@ class TournamentRequest extends FormRequest
             'name.max' => 'Название турнира должно быть меньше 50 символов',
             'start_date.required' => 'Обязательно должна быть указана дата начала турнира',
             'end_date.required' => 'Обязательно должна быть указана дата окончания турнира',
+            'type.required' => 'Обязательно должно быть указано количество команд в турнире',
         ];
     }
 }

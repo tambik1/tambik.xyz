@@ -13,8 +13,9 @@ class TestController extends Controller
     public function test()
     {
 
-        $range = Config::get('grid');
+        $config = Config::get('grid');
+        $typeData = $config[16]['range'];
 
-        return view('blocks._test', ['data' => $range]);
+        return view('blocks._test', ['data' => $typeData]);
     }
 }

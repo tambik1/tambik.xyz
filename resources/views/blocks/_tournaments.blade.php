@@ -9,7 +9,7 @@
                             style="border-radius: 5px">Создать турнир
                     </button>
                 </div>
-
+{{--{{dd($type)}}--}}
                 <div id="modal-create-tournaments" uk-modal>
                     <div class="uk-modal-dialog uk-modal-body">
                         <form action="{{route('tournaments.store')}}" method="post">
@@ -28,6 +28,14 @@
                                 <div class="input-group mb-4 constrained">
                                     <input name="end_date" type="date" class="form-control ppDate" id="from-date" aria-describedby="date-design-prepend" required>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label name="type" for="from-date">Выберете количество команд в турнире: </label>
+                                <select name="type" class="uk-select" aria-label="Select">
+                                    @foreach($type as $value)
+                                        <option>{{$value}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <p class="uk-text-right">
                                 <button class="uk-button uk-button-default uk-modal-close" type="button"
