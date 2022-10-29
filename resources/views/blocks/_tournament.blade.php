@@ -13,7 +13,7 @@
                 <h4>ID: <span>{{$data->id}}</span></h4>
                 <h4 class="uk-card-title">Дата начала: <span>{{$data->start_date}}</span></h4>
                 <h4 class="uk-card-title">Дата окончания: <span>{{$data->end_date}}</span></h4>
-                <a href="#"><button class="uk-button uk-button-primary">Перейти к матчам</button></a>
+                <a href="{{route('showBattle' , $data->id)}}"><button class="uk-button uk-button-primary">Перейти к матчам</button></a>
             </div>
             @can('showAdminContent')
                 <div class="uk-card-footer">

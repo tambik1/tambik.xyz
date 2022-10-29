@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('battles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('tournament_id');
-            $table->unsignedBigInteger('first_team');
-            $table->unsignedBigInteger('second_team');
+            $table->unsignedBigInteger('first_team')->nullable();
+            $table->unsignedBigInteger('second_team')->nullable();
             $table->string('first_team_score')->nullable();
             $table->string('second_team_score')->nullable();
             $table->timestamp('date')->nullable();

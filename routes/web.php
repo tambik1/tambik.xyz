@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TournamentController;
-
-
+//Для тестов
+Route::get('/test', 'App\Http\Controllers\TestController@test')->name('test');
 
 Route::get('/','App\Http\Controllers\IndexController@index')->name('home.index');
 
@@ -24,4 +24,5 @@ Route::resource('tournaments', TournamentController::class)->only([
 ]);
 Route::get('tournaments/{id}/delete',  'App\Http\Controllers\TournamentController@deleteTournament')->middleware('admin')->name('deleteTournament');
 Route::post('/tournaments/{id}/update', 'App\Http\Controllers\TournamentController@updateTournament')->middleware('admin')->name('updateTournament');
-Route::get('/test', 'App\Http\Controllers\TestController@test')->name('test');
+//Сетка
+Route::get('tournaments/{id}/battle', 'App\Http\Controllers\BattleController@showBattle')->name('showBattle');

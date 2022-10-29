@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\UsersRole;
+use Illuminate\Support\Facades\Config;
 
 
 //Данный контроллер реализован специально, что бы проводить разные тесты
 class TestController extends Controller
 {
 
-    public function test(UsersRole $userRole)
+    public function test()
     {
-        $isAdmin = $userRole->isAdmin();
 
-        return view('blocks._test', ['data' => $isAdmin]);
+        $range = Config::get('grid');
+
+        return view('blocks._test', ['data' => $range]);
     }
 }
