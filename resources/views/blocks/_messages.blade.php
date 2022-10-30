@@ -15,3 +15,9 @@
         <a class="uk-alert-close" uk-close ></a>
     </div>
 @endif
+@if(session('redirect'))
+    <div class="uk-alert-success" uk-alert style="margin: 0">
+        <p style="margin-left: 10px">{{session('redirect')}}</p>
+        <a class="uk-alert-close" uk-close ></a>
+    </div>
+@endif

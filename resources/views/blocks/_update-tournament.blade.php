@@ -17,6 +17,7 @@
                     <label for="from-date">Введите дату окончания:</label>
                     <div class="input-group mb-4 constrained">
                         <input name="end_date" value="{{$data->end_date}}" type="date" class="form-control ppDate" id="from-date" aria-describedby="date-design-prepend">
+                        <input type="hidden" name="type" value="{{$data->type}}">
                     </div>
                 </div>
                 <p class="uk-text-right">

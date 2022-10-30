@@ -22,7 +22,9 @@ Route::post('/teams/create', 'App\Http\Controllers\TeamController@createTeam')->
 Route::resource('tournaments', TournamentController::class)->only([
     'index', 'store','show','edit'
 ]);
-Route::get('tournaments/{id}/delete',  'App\Http\Controllers\TournamentController@deleteTournament')->middleware('admin')->name('deleteTournament');
-Route::post('/tournaments/{id}/update', 'App\Http\Controllers\TournamentController@updateTournament')->middleware('admin')->name('updateTournament');
+Route::get('tournaments/{tournamentId}/delete',  'App\Http\Controllers\TournamentController@deleteTournament')->name('deleteTournament');
+Route::post('/tournaments/{tournament_id}/update', 'App\Http\Controllers\TournamentController@updateTournament')->name('updateTournament');
 //Сетка
-Route::get('tournaments/{id}/battle', 'App\Http\Controllers\BattleController@showBattle')->name('showBattle');
+Route::get('tournaments/{tournamentId}/battle', 'App\Http\Controllers\BattleController@showBattle')->name('showBattle');
+Route::get('tournaments/{tournamentId}/battle/team_selection', 'App\Http\Controllers\BattleController@teamSelection')->middleware('admin')->name('teamSelection');
+Route::post('tournaments/team_selection/submit', 'App\Http\Controllers\BattleController@teamSelectionSubmit')->middleware('admin')->name('teamSelectionSubmit');

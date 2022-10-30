@@ -17,4 +17,9 @@ class Tournament extends Model
 
         return array_keys($config);
     }
+    public function getTypeById($tournamentId){
+        $tournamentType =$this->where('id',$tournamentId)->first();
+        return $tournamentType->type;
+
+    }
 }

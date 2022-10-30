@@ -5,8 +5,14 @@
             <h1 id="headline">Название турнира из объекта турнира</h1>
             <p class="year"> Дата начала из турнира - дата окончания турнира </p>
         </div>
+        @can('showAdminContent')
+            <div class="tournament_management">
+                <div class="tournament_management__container">
+                    <a href="#"><button class="uk-button uk-button-secondary" type="button" style="border-radius: 5px;" aria-expanded="false">Перейти к управлению</button></a>
+                </div>
+            </div>
+        @endcan
     </header>
-
 
     <section id="bracket">
         <div class="container__grid">
