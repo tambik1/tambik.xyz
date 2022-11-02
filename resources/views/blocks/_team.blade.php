@@ -12,12 +12,14 @@
             <div class="uk-card-body">
                 <p>ID: <span>{{$data->id}}</span></p>
             </div>
+            @can('showAdminContent')
             <div class="uk-card-footer">
-                @can('showAdminContent')
+
                     <a href="{{route('updateTeam', $data->id)}}"><button class="uk-button uk-button-primary">Изменить</button></a>
                     <button class="uk-button uk-button-danger" uk-toggle="target: #modal-delete-team" style="margin-left: 15px">Удалить</button>
-                @endcan
             </div>
+            @endcan
+
         </div>
 
         <div id="modal-delete-team" uk-modal>
