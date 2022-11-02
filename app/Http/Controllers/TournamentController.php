@@ -20,7 +20,6 @@ class TournamentController extends Controller
         $allTournament = Tournament::paginate(25);
         return view('blocks._tournaments',['data' => $allTournament, 'type' => $type]);
     }
-//TODO: Под капотом создаем ещё заглушки баттлов исходя из переданного типа, указываем их количество, ставим им позицию и привязываем к турниру по ID.
     public function store(TournamentRequest $req)
     {
         $newTournament = new Tournament();
@@ -65,13 +64,13 @@ class TournamentController extends Controller
     public function deleteTournament(int $tournamentId)
     {
         Battle::where('tournament_id',$tournamentId)->delete();
-        DB::table('tournament_team')->where('tournament_id',$tournamentId)->delete();
+        DB::table('tournament_teams')->where('tournament_id',$tournamentId)->delete();
         Tournament::find($tournamentId)->delete();
         return redirect()->route('tournaments.index')->with('success', 'Запись была удалена');
     }
     public function edit(int $tournamentId)
     {
         $tournament = Tournament::find($tournamentId);
-        return view('blocks._update-tournament', ['data' => $tournament]);
+        return view('blocks._tournament__update', ['data' => $tournament]);
     }
 }

@@ -14,12 +14,15 @@ class Tournament extends Model
     public static function getType()
     {
         $config = Config::get('grid');
-
         return array_keys($config);
+    }
+    public static function getGridConfig($type)
+    {
+        $config = Config::get('grid');
+        return $config[$type];
     }
     public function getTypeById($tournamentId){
         $tournamentType =$this->where('id',$tournamentId)->first();
         return $tournamentType->type;
-
     }
 }

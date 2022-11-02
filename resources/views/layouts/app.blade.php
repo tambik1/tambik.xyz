@@ -30,12 +30,6 @@
                 @auth
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Рейтинг') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Статистика') }}</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('tournaments.index') }}">{{ __('Турниры') }}</a>
                         </li>
                         <li class="nav-item">

@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TournamentController;
+
 //Для тестов
 Route::get('/test', 'App\Http\Controllers\TestController@test')->name('test');
 
-Route::get('/','App\Http\Controllers\IndexController@index')->name('home.index');
+Route::get('/', 'App\Http\Controllers\IndexController@index')->name('home.index');
 
 Auth::routes();
 
@@ -20,11 +21,13 @@ Route::post('/teams/{id}/update', 'App\Http\Controllers\TeamController@updateTea
 Route::post('/teams/create', 'App\Http\Controllers\TeamController@createTeam')->middleware('admin')->name('createTeam');
 //Турниры
 Route::resource('tournaments', TournamentController::class)->only([
-    'index', 'store','show','edit'
+    'index', 'store', 'show', 'edit'
 ]);
-Route::get('tournaments/{tournamentId}/delete',  'App\Http\Controllers\TournamentController@deleteTournament')->name('deleteTournament');
+Route::get('tournaments/{tournamentId}/delete', 'App\Http\Controllers\TournamentController@deleteTournament')->name('deleteTournament');
 Route::post('/tournaments/{tournament_id}/update', 'App\Http\Controllers\TournamentController@updateTournament')->name('updateTournament');
 //Сетка
 Route::get('tournaments/{tournamentId}/battle', 'App\Http\Controllers\BattleController@showBattle')->name('showBattle');
 Route::get('tournaments/{tournamentId}/battle/team_selection', 'App\Http\Controllers\BattleController@teamSelection')->middleware('admin')->name('teamSelection');
 Route::post('tournaments/team_selection/submit', 'App\Http\Controllers\BattleController@teamSelectionSubmit')->middleware('admin')->name('teamSelectionSubmit');
+Route::get('/battle/update/{battleId}', 'App\Http\Controllers\BattleController@battleUpdate')->middleware('admin')->name('battleUpdate');
+Route::post('/battle/update/{battleId}', 'App\Http\Controllers\BattleController@battleUpdateSubmit')->middleware('admin')->name('battleUpdateSubmit');

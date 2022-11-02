@@ -6,42 +6,9 @@
             <p class="year"> {{date("d.m.Y", strtotime($data['tournamentData']->start_date))}} - {{date("d.m.Y", strtotime($data['tournamentData']->end_date))}} </p>
         </div>
     </header>
-
     <section id="bracket">
         <div class="container__grid">
             <div class="split split-one">
-                <div class="round round-two">
-                    <div class="round-details">1/8<br/></div>
-                    @foreach($data['configGrid']['1\8 left'] as $round)
-                        <ul class="matchup">
-                            @foreach($data['roundData'] as $value)
-                                @if($value->position === $round)
-                                    <div class="round-details__date"><span class="date">
-                                            @if($value->date === null)
-                                                Без даты
-                                            @else
-                                                {{date("d.m.Y", strtotime($value->date))}}
-                                            @endif
-                                        </span>
-                                    </div>
-                                @endif
-                            @endforeach
-                            @foreach($data['roundData'] as $value)
-                                @if($value->position === $round)
-                                    <li class="team team-top">{{$value->firstTeam->name ?? 'Не указано'}}<span class="score">{{$value->first_team_score ?? '0'}}</span></li>
-                                    <li class="team team-bottom">{{$value->secondTeam->name ?? 'Не указано'}}<span class="score">{{$value->second_team_score ?? '0'}}</span></li>
-                                @endif
-                            @endforeach
-                            @can('showAdminContent')
-                                @foreach($data['roundData'] as $value)
-                                    @if($value->position === $round)
-                                       <div class="matchup_update__button"><a href="{{route('battleUpdate',$value->id)}}"><button class="uk-button uk-button-secondary" type="button" style="border-radius: 5px;position: relative " aria-expanded="false">Изменить</button></a></div>
-                                    @endif
-                                @endforeach
-                            @endcan
-                        </ul>
-                    @endforeach
-                </div>	<!-- END ROUND ONE -->
 
                 <div class="round round-three">
                     <div class="round-details">1/4<br/></div>
@@ -74,7 +41,7 @@
                             @endcan
                         </ul>
                     @endforeach
-                </div>	<!-- END ROUND THREE -->
+                </div>
             </div>
 
             <div class="champion">
@@ -120,7 +87,8 @@
                                             {{date("d.m.Y", strtotime($value->date))}}
                                         @endif
                                         </span>
-                                </div>                            @endif
+                                </div>
+                            @endif
                         @endforeach
                     </div>
                     <ul class ="matchup championship">
@@ -204,40 +172,7 @@
                             @endcan
                         </ul>
                     @endforeach
-                </div>	<!-- END ROUND THREE -->
-
-                <div class="round round-two">
-                    <div class="round-details">1/8<br/></div>
-                    @foreach($data['configGrid']['1\8 right'] as $round)
-                        <ul class="matchup">
-                            @foreach($data['roundData'] as $value)
-                                @if($value->position === $round)
-                                    <div class="round-details__date"><span class="date">
-                                            @if($value->date === null)
-                                                Без даты
-                                            @else
-                                                {{date("d.m.Y", strtotime($value->date))}}
-                                            @endif
-                                        </span>
-                                    </div>
-                                @endif
-                            @endforeach
-                            @foreach($data['roundData'] as $value)
-                                @if($value->position === $round)
-                                    <li class="team team-top">{{$value->firstTeam->name ?? 'Не указано'}}<span class="score">{{$value->first_team_score ?? '0'}}</span></li>
-                                    <li class="team team-bottom">{{$value->secondTeam->name ?? 'Не указано'}}<span class="score">{{$value->second_team_score ?? '0'}}</span></li>
-                                @endif
-                            @endforeach
-                            @can('showAdminContent')
-                                @foreach($data['roundData'] as $value)
-                                    @if($value->position === $round)
-                                        <div class="matchup_update__button"><a href="{{route('battleUpdate',$value->id)}}"><button class="uk-button uk-button-secondary" type="button" style="border-radius: 5px;position: relative " aria-expanded="false">Изменить</button></a></div>
-                                    @endif
-                                @endforeach
-                            @endcan
-                        </ul>
-                    @endforeach
-                </div>	<!-- END ROUND ONE -->
+                </div>
 
             </div>
         </div>
