@@ -52,7 +52,7 @@ class TournamentController extends Controller
 
     public function updateTournament(int $tournamentId, TournamentRequest $req)
     {
-        $updateTournament = Tournament::find($tournamentId);
+        $updateTournament = Tournament::findOrFail($tournamentId);
         $updateTournament->name = $req->input('name');
         $updateTournament->start_date = $req->input('start_date');
         $updateTournament->end_date = $req->input('end_date');
@@ -65,12 +65,12 @@ class TournamentController extends Controller
     {
         Battle::where('tournament_id',$tournamentId)->delete();
         DB::table('tournament_teams')->where('tournament_id',$tournamentId)->delete();
-        Tournament::find($tournamentId)->delete();
+        Tournament::findOrFail($tournamentId)->delete();
         return redirect()->route('tournaments.index')->with('success', 'Запись была удалена');
     }
     public function edit(int $tournamentId)
     {
-        $tournament = Tournament::find($tournamentId);
+        $tournament = Tournament::findOrFail($tournamentId);
         return view('blocks._tournament__update', ['data' => $tournament]);
     }
 }

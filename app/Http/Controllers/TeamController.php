@@ -38,13 +38,13 @@ class TeamController extends Controller
 
     public function updateTeam(int $id)
     {
-        $team = Team::find($id);
+        $team = Team::findOrFail($id);
         return view('blocks._update-team', ['data' => $team]);
     }
 
     public function updateTeamSubmit(int $id, TeamRequest $req)
     {
-        $updateTeam = Team::find($id);
+        $updateTeam = Team::findOrFail($id);
         $updateTeam->name = $req->input('name');
         $updateTeam->save();
         return redirect()->route('detailTeam', $id)->with('success', 'Запись была обновлена');
@@ -52,7 +52,7 @@ class TeamController extends Controller
 
     public function deleteTeam(int $id)
     {
-        Team::find($id)->delete();
+        Team::findOrFail($id)->delete();
         return redirect()->route('showAllTeam')->with('success', 'Запись была удалена');
     }
 }

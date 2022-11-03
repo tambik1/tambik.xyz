@@ -25,7 +25,7 @@ class BattleController extends Controller
             return redirect()->route('teamSelection', $tournamentId)->with('redirect', 'Необходимо добавить команды');
         }
         $tournament = new Tournament();
-        $tournamentData = $tournament::find($tournamentId);
+        $tournamentData = $tournament::findOrFail($tournamentId);
         $type = $tournament->getTypeById($tournamentId);
         $configGrid = Tournament::getGridConfig($type);
         $roundData = Battle::with('firstTeam','secondTeam')->where('tournament_id', $tournamentId)->get();
@@ -34,7 +34,7 @@ class BattleController extends Controller
 
     public function teamSelection($tournamentId)
     {
-        $tournament = Tournament::find($tournamentId);
+        $tournament = Tournament::findOrFail($tournamentId);
         $teams = Team::all();
         $typeTournament = $tournament->type;
         return view('blocks._team_selection', ['data' => ['typeTournament' => $typeTournament, 'tournamentId' => $tournamentId, 'teams' => $teams]]);
@@ -55,13 +55,13 @@ class BattleController extends Controller
         return redirect()->route('showBattle', $tournamentId)->with('success', 'Команды были добавлены');
     }
     public function battleUpdate($battleId){
-        $battleData = Battle::with('firstTeam','secondTeam')->find($battleId);
+        $battleData = Battle::with('firstTeam','secondTeam')->findOrFail($battleId);
         $teamTournamentData = TournamentTeam::with('firstTeam','secondTeam')->where('tournament_id',$battleData->tournament_id)->get();
         return view('blocks._battle_update',['data' =>['battleData'=>$battleData,'teamTournamentData'=>$teamTournamentData]]);
     }
 
     public function battleUpdateSubmit($battleId, Request $request){
-        $updateBattle = Battle::find($battleId);
+        $updateBattle = Battle::findOrFail($battleId);
         $updateBattle->first_team = $request->input('first_team');
         $updateBattle->second_team = $request->input('second_team');
         $updateBattle->first_team_score = $request->input('first_team_score');

@@ -21,3 +21,9 @@
         <a class="uk-alert-close" uk-close ></a>
     </div>
 @endif
+@if(session('noAccess'))
+    <div class="uk-alert-danger" uk-alert style="margin: 0">
+        <p style="margin-left: 10px">{{session('noAccess')}}</p>
+        <a class="uk-alert-close" uk-close ></a>
+    </div>
+@endif

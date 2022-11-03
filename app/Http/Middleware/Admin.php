@@ -22,6 +22,6 @@ class Admin
         {
             return $next($request);
         }
-        return redirect()->route('home')->with('success', 'Доступ запрещён');
+        return redirect()->route('home')->with('noAccess', 'Доступ запрещён');
     }
 }
