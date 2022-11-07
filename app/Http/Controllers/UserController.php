@@ -11,7 +11,7 @@ class UserController extends Controller
 
         $allUser = User::with('role')->paginate(50);
 
-        return view('blocks._users_show', ['data' => $allUser]);
+        return view('blocks._show_users', ['data' => $allUser]);
     }
 
     public function moderationUser($userId)

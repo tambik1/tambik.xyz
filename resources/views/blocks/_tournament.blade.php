@@ -15,6 +15,7 @@
                 <h4 class="uk-card-title">Дата окончания: <span>{{date("d.m.Y", strtotime($data->end_date))}}</span></h4>
                 <h4 class="uk-card-title">Количество команд: <span>{{$data->type}}</span></h4>
                 <a href="{{route('showBattle' , $data->id)}}"><button class="uk-button uk-button-primary">Перейти к матчам</button></a>
+                <a href="{{route('statisticsTournament' , $data->id)}}" style="margin-left: 20px"><button class="uk-button uk-button-primary">Перейти к Статистике</button></a>
             </div>
             @can('showAdminContent')
                 <div class="uk-card-footer">

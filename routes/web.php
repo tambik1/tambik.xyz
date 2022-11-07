@@ -33,3 +33,6 @@ Route::get('/user','App\Http\Controllers\UserController@showUsers')->middleware(
 Route::get('/user/{id}','App\Http\Controllers\UserController@moderationUser')->middleware('admin')->name('moderationUser');
 Route::post('/user/{id}','App\Http\Controllers\UserController@moderationUserSubmit')->middleware('admin')->name('moderationUserSubmit');
 Route::get('/user/{id}/delete','App\Http\Controllers\UserController@deleteUser')->middleware('admin')->name('deleteUser');
+//Статистика турнира
+Route::get('/statistics/{tournamentId}','App\Http\Controllers\StatisticsController@statisticsTournament')->name('statisticsTournament');
+
