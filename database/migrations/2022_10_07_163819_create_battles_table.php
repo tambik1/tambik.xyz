@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('tournament_id');
             $table->unsignedBigInteger('first_team')->nullable();
             $table->unsignedBigInteger('second_team')->nullable();
-            $table->string('first_team_score')->nullable();
-            $table->string('second_team_score')->nullable();
+            $table->integer('first_team_score')->nullable();
+            $table->integer('second_team_score')->nullable();
             $table->timestamp('date')->nullable();
             $table->bigInteger('position');
 
