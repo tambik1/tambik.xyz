@@ -84,7 +84,7 @@
             </div>
         </nav>
         @include('blocks._messages')
-        <main class="py-xxl-4">
+        <main class="py-xxl-4" style="height: 90vh;">
             @yield('content')
         </main>
     </div>

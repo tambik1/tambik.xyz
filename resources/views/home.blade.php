@@ -5,16 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">Это просто домашня страница =)</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    Привет! Добро пожаловать в сервис для управления турнирами <a class="uk-link-muted" href="https://tambik.xyz/">tambik.xyz</a>
                 </div>
             </div>
         </div>
