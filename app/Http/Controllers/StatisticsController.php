@@ -12,16 +12,23 @@ class StatisticsController extends Controller
         $this->middleware('auth');
     }
 
-    public function statisticsTournament($tournamentId)
+    public function statisticsTournament(int $tournamentId)
     {
         $teams = TournamentTeam::with('firstTeam')->where('tournament_id', $tournamentId)->get();
 
         $battleData = new Battle();
-        $maxScore = $battleData->bestScore($tournamentId);
-        $sumScore = $battleData->sumScore($tournamentId);
-        $avgScore = $battleData->avgScore($tournamentId);
+        $maxScore = $battleData->bestScoreInTournament($tournamentId);
+        $sumScore = $battleData->sumScoreInTournament($tournamentId);
+        $avgScore = $battleData->avgScoreInTournament($tournamentId);
 
-        return view('blocks._statisticsTournament', ['data' => ['teamData' => $teams, 'maxScore'=>$maxScore, 'sumScore'=>$sumScore, 'avgScore'=>$avgScore]]);
+        return view('blocks._tournament_statistics', ['data' => ['teamData' => $teams, 'maxScore' => $maxScore, 'sumScore' => $sumScore, 'avgScore' => $avgScore]]);
+    }
+
+    public function ratingTeam()
+    {
+        $battleData = new Battle();
+        $ratingData = $battleData->overallRating();
+        return view('blocks._rating', ['data' => ['ratingData'=>$ratingData]]);
     }
 
 }

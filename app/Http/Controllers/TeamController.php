@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\TeamRequest;
 use App\Models\Team;
 
@@ -16,9 +15,9 @@ class TeamController extends Controller
 
     public function showAllTeam()
     {
-        $allTeams = Team::paginate(25);
+        $allTeams = Team::paginate(24);
 
-        return view('blocks._teams', ['data' => $allTeams]);
+        return view('blocks._team_list', ['data' => $allTeams]);
     }
 
     public function createTeam(TeamRequest $req)
@@ -33,13 +32,13 @@ class TeamController extends Controller
     public function detailTeam(int $id)
     {
         $team = Team::findOrFail($id);
-        return view('blocks._team', ['data' => $team]);
+        return view('blocks._team_detail', ['data' => $team]);
     }
 
     public function updateTeam(int $id)
     {
         $team = Team::findOrFail($id);
-        return view('blocks._update-team', ['data' => $team]);
+        return view('blocks._team_update', ['data' => $team]);
     }
 
     public function updateTeamSubmit(int $id, TeamRequest $req)

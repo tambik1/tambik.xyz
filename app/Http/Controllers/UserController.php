@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\ModerationUser;
+
 class UserController extends Controller
 {
     public function showUsers()
@@ -11,20 +12,20 @@ class UserController extends Controller
 
         $allUser = User::with('role')->paginate(50);
 
-        return view('blocks._show_users', ['data' => $allUser]);
+        return view('blocks._user_show', ['data' => $allUser]);
     }
 
-    public function moderationUser($userId)
+    public function moderationUser(int $userId)
     {
         $user = User::findOrFail($userId);
 
-        return view('blocks._moderation_user', ['data' => $user]);
+        return view('blocks._user_update', ['data' => $user]);
     }
 
-    public function moderationUserSubmit($userId, ModerationUser $dataUser){
+    public function moderationUserSubmit(int $userId, ModerationUser $dataUser)
+    {
         $user = User::with('role')->findOrFail($userId);
-        if($dataUser->input('role') === 1)
-        {
+        if ($dataUser->input('role') === 1) {
             $user->name = $dataUser->input('name');
             $user->role->role = $dataUser->input('role');
             $user->role->name = 'Администратор';
@@ -39,6 +40,7 @@ class UserController extends Controller
         $user->role->save();
         return redirect()->route('showUsers')->with('success', 'Запись была обнавлена');
     }
+
     public function deleteUser(int $userId)
     {
         $user = User::with('role')->findOrFail($userId);

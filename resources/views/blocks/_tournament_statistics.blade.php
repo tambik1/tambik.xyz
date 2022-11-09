@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="content_container" style="display: flex; flex-direction: row; justify-content: center;">
+    <div class="content_container" style="display: flex;flex-direction: row;justify-content: center;align-items: flex-start;height: 87vh;">
         <div class="user_table_container">
             <table class="uk-table uk-table-middle uk-table-divider uk-table-justify">
                 <thead>

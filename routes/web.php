@@ -35,4 +35,5 @@ Route::post('/user/{id}','App\Http\Controllers\UserController@moderationUserSubm
 Route::get('/user/{id}/delete','App\Http\Controllers\UserController@deleteUser')->middleware('admin')->name('deleteUser');
 //Статистика турнира
 Route::get('/statistics/{tournamentId}','App\Http\Controllers\StatisticsController@statisticsTournament')->name('statisticsTournament');
-
+//Рейтинг
+Route::get('/rating','App\Http\Controllers\StatisticsController@ratingTeam')->name('ratingTeam');

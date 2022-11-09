@@ -18,8 +18,9 @@ class TournamentController extends Controller
     {
         $type = Tournament::getType();
         $allTournament = Tournament::paginate(25);
-        return view('blocks._tournaments',['data' => $allTournament, 'type' => $type]);
+        return view('blocks._tournament_list', ['data' => $allTournament, 'type' => $type]);
     }
+
     public function store(TournamentRequest $req)
     {
         $newTournament = new Tournament();
@@ -30,10 +31,9 @@ class TournamentController extends Controller
         $newTournament->save();
         $tournament = Tournament::orderByDesc('id')->first();
         $tournamentId = $tournament->id;
-        $typeTournament = (int) $tournament->type;
+        $typeTournament = (int)$tournament->type;
         $i = 1;
-        while ($i < $typeTournament)
-        {
+        while ($i < $typeTournament) {
             $newBattle = new Battle();
             $newBattle->tournament_id = $tournamentId;
             $newBattle->position = $i;
@@ -41,13 +41,13 @@ class TournamentController extends Controller
             $i++;
         }
 
-        return redirect()->route('teamSelection',$tournamentId)->with('success', 'Турнир был создан,осталось выбрать команды');
+        return redirect()->route('teamSelection', $tournamentId)->with('success', 'Турнир был создан,осталось выбрать команды');
     }
 
     public function show(int $tournamentId)
     {
         $tournament = Tournament::findOrFail($tournamentId);
-        return view('blocks._tournament', ['data' => $tournament]);
+        return view('blocks._tournament_detail', ['data' => $tournament]);
     }
 
     public function updateTournament(int $tournamentId, TournamentRequest $req)
@@ -63,14 +63,15 @@ class TournamentController extends Controller
 
     public function deleteTournament(int $tournamentId)
     {
-        Battle::where('tournament_id',$tournamentId)->delete();
-        DB::table('tournament_teams')->where('tournament_id',$tournamentId)->delete();
+        Battle::where('tournament_id', $tournamentId)->delete();
+        DB::table('tournament_teams')->where('tournament_id', $tournamentId)->delete();
         Tournament::findOrFail($tournamentId)->delete();
         return redirect()->route('tournaments.index')->with('success', 'Запись была удалена');
     }
+
     public function edit(int $tournamentId)
     {
         $tournament = Tournament::findOrFail($tournamentId);
-        return view('blocks._tournament__update', ['data' => $tournament]);
+        return view('blocks._tournament_update', ['data' => $tournament]);
     }
 }

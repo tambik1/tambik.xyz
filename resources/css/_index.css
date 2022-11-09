@@ -2,3 +2,6 @@
 {
     display: flex;
 }
+.content-container{
+    height: 87vh;
+}

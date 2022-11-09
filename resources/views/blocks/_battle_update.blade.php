@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <form class="uk-form-stacked" method="post" action='{{route('battleUpdateSubmit',$data['battleData']->id)}}'>
+    <div class="content-container">
+    <form class="uk-form-stacked" method="post" action='{{route('battleUpdateSubmit',$data['battleData']->id)}}' style="width: 70%;">
         @csrf
         <h3 class="selection_form__title">Обновление матча</h3>
         <div class="selection_form__select_section">

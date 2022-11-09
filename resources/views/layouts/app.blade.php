@@ -3,18 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Tambik') }}</title>
-    <link rel="shortcut icon" href="/img/icons/favicon.ico" type="image/x-icon">
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="shortcut icon" href="/img/icons/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/uikit.min.css" />
     <link rel="stylesheet" href="/css/uikit-rtl.min.css" />
-    <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/css/app.css'])
 </head>
 <body>
@@ -26,9 +19,11 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
                 @auth
                     <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('ratingTeam') }}">{{ __('Рейтинг') }}</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('tournaments.index') }}">{{ __('Турниры') }}</a>
                         </li>
@@ -37,8 +32,6 @@
                         </li>
                     </ul>
                 @endauth
-
-                    <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                     @auth
                         @can('showAdminContent')
@@ -47,7 +40,6 @@
                             </li>
                         @endcan
                     @endauth
-                        <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -84,7 +76,7 @@
             </div>
         </nav>
         @include('blocks._messages')
-        <main class="py-xxl-4" style="height: 90vh;">
+        <main class="py-xxl-4" style="height: 100%;overflow: hidden;">
             @yield('content')
         </main>
     </div>

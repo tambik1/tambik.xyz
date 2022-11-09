@@ -18,7 +18,7 @@ class BattleController extends Controller
         $this->middleware('auth');
     }
 
-    public function showBattle($tournamentId)
+    public function showBattle(int $tournamentId)
     {
         $checkTeam = TournamentTeam::where('tournament_id', $tournamentId)->get()->count();
         if ($checkTeam === 0) {
@@ -28,11 +28,11 @@ class BattleController extends Controller
         $tournamentData = $tournament::findOrFail($tournamentId);
         $type = $tournament->getTypeById($tournamentId);
         $configGrid = Tournament::getGridConfig($type);
-        $roundData = Battle::with('firstTeam','secondTeam')->where('tournament_id', $tournamentId)->get();
-       return view('blocks._tournament_grid__' . $type,['data' =>['configGrid'=>$configGrid,'roundData'=>$roundData,'tournamentData'=>$tournamentData]]);
+        $roundData = Battle::with('firstTeam', 'secondTeam')->where('tournament_id', $tournamentId)->get();
+        return view('blocks._tournament_grid__' . $type, ['data' => ['configGrid' => $configGrid, 'roundData' => $roundData, 'tournamentData' => $tournamentData]]);
     }
 
-    public function teamSelection($tournamentId)
+    public function teamSelection(int $tournamentId)
     {
         $tournament = Tournament::findOrFail($tournamentId);
         $teams = Team::all();
@@ -54,13 +54,16 @@ class BattleController extends Controller
         }
         return redirect()->route('showBattle', $tournamentId)->with('success', 'Команды были добавлены');
     }
-    public function battleUpdate($battleId){
-        $battleData = Battle::with('firstTeam','secondTeam')->findOrFail($battleId);
-        $teamTournamentData = TournamentTeam::with('firstTeam','secondTeam')->where('tournament_id',$battleData->tournament_id)->get();
-        return view('blocks._battle_update',['data' =>['battleData'=>$battleData,'teamTournamentData'=>$teamTournamentData]]);
+
+    public function battleUpdate($battleId)
+    {
+        $battleData = Battle::with('firstTeam', 'secondTeam')->findOrFail($battleId);
+        $teamTournamentData = TournamentTeam::with('firstTeam', 'secondTeam')->where('tournament_id', $battleData->tournament_id)->get();
+        return view('blocks._battle_update', ['data' => ['battleData' => $battleData, 'teamTournamentData' => $teamTournamentData]]);
     }
 
-    public function battleUpdateSubmit($battleId, Request $request){
+    public function battleUpdateSubmit(int $battleId, Request $request)
+    {
         $updateBattle = Battle::findOrFail($battleId);
         $updateBattle->first_team = $request->input('first_team');
         $updateBattle->second_team = $request->input('second_team');

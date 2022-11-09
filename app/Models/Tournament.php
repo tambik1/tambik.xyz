@@ -21,7 +21,7 @@ class Tournament extends Model
         $config = Config::get('grid');
         return $config[$type];
     }
-    public function getTypeById($tournamentId){
+    public function getTypeById(int $tournamentId){
         $tournamentType =$this->where('id',$tournamentId)->first();
         return $tournamentType->type;
     }
