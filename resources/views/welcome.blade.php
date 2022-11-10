@@ -11,7 +11,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/index_page.css">
-    <link rel="shortcut icon" href="/img/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/icons/favicon.png" type="image/x-icon">
 </head>
 <body class="antialiased">
 <div class="container__index">
