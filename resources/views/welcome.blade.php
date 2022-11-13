@@ -50,7 +50,6 @@
             </div>
         </div>
     </div>
-    <script src="/js/index_page.js"></script>
 </div>
 </body>
 </html>
